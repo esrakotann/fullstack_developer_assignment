@@ -1,18 +1,13 @@
 package com.linktera.linkteraquiz.service.base;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface BaseService<T> {
 
-    List<T> getList();
-
-    T get(UUID uuid);
-
-    void save(T dto);
-
-    void update(UUID uuid, T dto);
-
-    void delete(UUID uuid);
+    List<T> getList() throws Exception;
+    T get(Long id) throws Exception;
+    void save(T entity) throws Exception;
+    T merge(Long id,T entity) throws Exception;
+    void delete(Long id) throws Exception;
 
 }

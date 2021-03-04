@@ -1,16 +1,23 @@
 package com.linktera.linkteraquiz.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.UUID;
+import javax.persistence.*;
 
-@Data
+@Entity
+@Getter @Setter
 public class Book {
 
-    private UUID uuid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String title;
 
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Author author;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Customer customer;
 }
